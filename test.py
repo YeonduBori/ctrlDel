@@ -25,8 +25,6 @@ curs = conn.cursor()
 # Flask 객체를 생성하고 그 이름을 app 으로 설정
 app = Flask(__name__)
 run_with_ngrok(app)
-id = 'test'
-passwd = 'testing'
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -38,9 +36,9 @@ def page_main():
 def login():
     user_id = request.form['id']
     user_pass = request.form['pass']
-    user_team = user_team_search(user_id)
-    todo_list = user_todo(user_team)
     if user_checking(user_id, user_pass):
+        user_team = user_team_search(user_id)
+        todo_list = user_todo(user_team)
         return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list)
     else:
         return Response('로그인 실패!', status=404)
@@ -69,13 +67,14 @@ def register_check():
     user_pass_re = request.form['pass_re']
     user_team = request.form['team']
     sql = "select id from user where id = '" + user_id + "';"
-    result_query = curs.execute(sql)
-    if result_query == 0 and user_pass_re == user_pass:
+    curs.execute(sql)
+    result_query = curs.fetchone()
+    if result_query is None and user_pass_re == user_pass:
         sql = "INSERT INTO user values('" + user_id + "', '" + user_pass + "', '" + user_team + "');"
         curs.execute(sql)
         conn.commit()
         return redirect('/')
-    elif result_query == 1:
+    elif result_query is not None:
         error_msg = "이미 존재하는 아이디입니다."
         return render_template('debug_register.html', pass_error=error_msg)
     elif user_pass != user_pass_re:
@@ -86,25 +85,31 @@ def register_check():
 def user_checking(userID, userPass):
     loginOK = False
     sql = "select id from user where id = '" + userID + "';"
-    if curs.execute(sql) == 1:
+    curs.execute(sql)
+    result_query = curs.fetchone()
+    if result_query is not None:
         sql = "select password from user where password = '" + userPass + "';"
-        if curs.execute(sql) == 1:
+        curs.execute(sql)
+        result_query = curs.fetchone()
+        if result_query is not None:
             loginOK = True
     return loginOK
 
 
 def user_team_search(userID):
     sql = "select team from user where id = '" + userID + "';"
-    if curs.execute(sql) == 1:
-        team_name = curs.fetchone()
-        return team_name[0]
+    curs.execute(sql)
+    result_query = curs.fetchone()
+    if result_query is not None:
+        return result_query[0]
 
 
 def user_todo(user_team):
     sql = "select * from workList where team = '" + user_team + "';"
-    if curs.execute(sql) == 1:
-        user_team = curs.fetchall()
-        return user_team
+    curs.execute(sql)
+    result_query = curs.fetchall()
+    if result_query is not None:
+        return result_query
 
 
 app.run()
