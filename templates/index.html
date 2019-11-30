@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ctrl+Del</title>
+  </head>
+  <body>
+    {% if user_data %}
+    <h1>아이디, 비밀번호, 팀명 출력</h1>
+      {% for user in user_data %}
+        <h3>아이디는 {{ user[0] }}, 비밀번호는 {{user[1]}}, 소속 팀{{user[2]}}</h3>
+      {% endfor %}
+    {% endif %}
+    {% if todo_list %}
+    <h1>담당자, 해야할 것, 기한</h1>
+      {% for todo in todo_list %}
+        <h3>담당자는{{ todo[0] }}이고,
+          <br>해야할 것은 {{todo[1]}}, 기한은 {{todo[2]}}까지입니다.</h3>
+      {% endfor %}
+    {% endif %}
+    <form name="login" method="POST" action="/login">
+    아이디 : <input type=text name="id"><br>
+    비밀번호 : <input type=text name="pass"><br>
+    <input type=submit value="로그인">
+    </form>
+  </body>
+</html>
