@@ -70,7 +70,7 @@ def register_check():
     user_team = request.form['team']
     sql = "select id from user where id = '" + user_id + "';"
     result_query = curs.execute(sql)
-    if result_query == 0 and user_pass_re is user_pass:
+    if result_query == 0 and user_pass_re == user_pass:
         sql = "INSERT INTO user values('" + user_id + "', '" + user_pass + "', '" + user_team + "');"
         curs.execute(sql)
         conn.commit()
@@ -78,7 +78,7 @@ def register_check():
     elif result_query == 1:
         error_msg = "이미 존재하는 아이디입니다."
         return render_template('debug_register.html', pass_error=error_msg)
-    elif user_pass is not user_pass_re:
+    elif user_pass != user_pass_re:
         error_msg = "비밀번호와 확인이 다릅니다."
         return render_template('debug_register.html', pass_error=error_msg)
 
