@@ -46,6 +46,43 @@ def login():
         return Response('로그인 실패!', status=404)
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    # user_id = request.form['id']
+    # user_pass = request.form['pass']
+    # # user_pass_re = request.form['pass_re']
+    # user_team = request.form['team']
+    # sql = "select id from user where id = '" + user_id + "';"
+    # if curs.execute(sql) == 0 and user_id:
+    #     sql = "INSERT INTO user values('" + user_id + "', '" + user_pass + "', '" + user_team + "');"
+    #     curs.execute(sql)
+    #     conn.commit()
+    #     return redirect('/')
+    # else:
+    return render_template('debug_register.html')
+
+
+@app.route('/register_check', methods=['GET', 'POST'])
+def register_check():
+    user_id = request.form['id']
+    user_pass = request.form['pass']
+    user_pass_re = request.form['pass_re']
+    user_team = request.form['team']
+    sql = "select id from user where id = '" + user_id + "';"
+    result_query = curs.execute(sql)
+    if result_query == 0 and user_pass_re is user_pass:
+        sql = "INSERT INTO user values('" + user_id + "', '" + user_pass + "', '" + user_team + "');"
+        curs.execute(sql)
+        conn.commit()
+        return redirect('/')
+    elif result_query == 1:
+        error_msg = "이미 존재하는 아이디입니다."
+        return render_template('debug_register.html', pass_error=error_msg)
+    elif user_pass is not user_pass_re:
+        error_msg = "비밀번호와 확인이 다릅니다."
+        return render_template('debug_register.html', pass_error=error_msg)
+
+
 def user_checking(userID, userPass):
     loginOK = False
     sql = "select id from user where id = '" + userID + "';"

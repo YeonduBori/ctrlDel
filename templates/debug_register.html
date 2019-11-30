@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% if pass_error %}
+      <h1>{{pass_error}}</h1>
+    {% endif %}
+    <form name="register" method="POST" action="/register_check">
+    아이디 : <input type=text name="id" required><br>
+    비밀번호 : <input type=password id="password" name="pass" required><br>
+    비밀번호 확인 : <input type=password id="password_re" name="pass_re" required><br>
+    팀 : <input type=text name="team" required><br>
+    <input type=submit value="회원가입">
+    </form>
+    <a href="/">홈으로</a>
+  </body>
+</html>

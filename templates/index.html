@@ -20,8 +20,11 @@
     {% endif %}
     <form name="login" method="POST" action="/login">
     아이디 : <input type=text name="id"><br>
-    비밀번호 : <input type=text name="pass"><br>
+    비밀번호 : <input type=password name="pass"><br>
     <input type=submit value="로그인">
+    </form>
+    <form name="register" method="POST" action="/register">
+    <input type=submit value="회원가입">
     </form>
   </body>
 </html>
