@@ -5,6 +5,7 @@
     <title>Ctrl+Del</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
     <link rel = "stylesheet" href="../static/todo.css" type="text/css">
+    
   </head>
   <body>
     <table>
@@ -13,10 +14,10 @@
     </tr>
     <form name="todo_register" method="POST" action="/insert/{{user_id}}">
         <tr>
-          <td>담당자</td>
-          <td>할 일</td>
-          <td>기한</td>
-          <td rowspan="2"><input type=submit class="btn" value="등록"></td>
+          <td style="font-weight: bold">담당자</td>
+          <td style="font-weight: bold">할 일</td>
+          <td style="font-weight: bold">기한</td>
+          <td rowspan="2" colspan="2"><input type=submit class="btn" value="등록"></td>
         </tr>
         <tr>
           <td><input type=text class="btn_input" name="worker" required><br></td>
@@ -27,14 +28,54 @@
     {% if todo_list %}
       {% for todo in todo_list %}
       <tr>
-        <td>{{ todo[1] }}</td>
-        <td>{{ todo[2] }}</td>
-        <td>{{ todo[3] }}</td>
-        <td><input type=submit value="삭제" onclick="location.href='/delete/{{user_id}}/{{todo[2]}}'"></td>
-        <!-- <td><a href="/delete/{{user_id}}/{{todo[2]}}">삭제</a></td> -->
+        <td class="line">{{ todo[1] }}</td>
+        <td class="line">{{ todo[2] }}</td>
+        <td class="line">{{ todo[3] }}</td>
+        <td class="line"><input type=submit value="삭제" class="btn" onclick="location.href='/delete/{{user_id}}/{{todo[2]}}'"></td>
       </tr>
       {% endfor %}
       </table>
     {% endif %}
   </body>
 </html>
+
+<style>
+    body{
+  /* width: 15%;
+  margin: 35% auto; */
+  display : flex;
+  justify-content:center;
+  align-items:center;
+  margin-top: 20%;
+
+  background-color: #D5A7AE;
+  font-family: "NanumBarunGothicLight", sans-serif;
+}
+
+table{
+  text-align: center;
+  color: #734A56;
+}
+
+.line{
+  border-bottom: 1px solid #FFCEE4;
+  padding: 10px;
+}
+
+.btn_input{
+  opacity: 80%;
+  color:#734A56;
+  font-size: 150%;
+}
+
+.btn{
+  /* background-color: transparent; */
+  background-color:#D5899F;
+  border: 0px;
+  font-size: 120%;
+  color: #734A56;
+  border-radius: 7px;
+  width: 100%;
+}
+
+  </style>
