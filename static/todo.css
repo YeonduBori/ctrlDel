@@ -1,0 +1,38 @@
+body{
+    /* width: 15%;
+    margin: 35% auto; */
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 20%;
+  
+    background-color: #D5A7AE;
+    font-family: "NanumBarunGothicLight", sans-serif;
+  }
+
+  table{
+    border-top: 1px solid #444444;
+    text-align: center;
+    color: #734A56;
+  }
+  
+  tr, td{
+    border-top: 1px solid #444444;
+    padding: 10px;
+  }
+
+  .btn_input{
+    opacity: 80%;
+    color:#734A56;
+    font-size: 150%;
+  }
+
+  .btn{
+    /* background-color: transparent; */
+    background-color:#D5899F;
+    border: 0px;
+    font-size: 120%;
+    color: #734A56;
+    border-radius: 7px;
+    width: 100%;
+  }

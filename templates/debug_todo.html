@@ -2,25 +2,27 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Ctrl+Del</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
+    <link rel = "stylesheet" href="../static/todo.css" type="text/css">
   </head>
   <body>
-    <h1>환영합니다 {{user_id}}님 여기는 {{user_team}} 할일 리스트입니다.</h1>
+    <table>
+    <tr>
+      <td colspan="4"><h1>환영합니다  <span style="background-color: #D5899F; color: white;">{{user_id}} 님!</span>  여기는 <span style="background-color: #D5899F; color:white;">{{user_team}}</span>  할일 리스트입니다.</h1></td>
+    </tr>
     <form name="todo_register" method="POST" action="/insert/{{user_id}}">
-      <table>
         <tr>
           <td>담당자</td>
           <td>할 일</td>
           <td>기한</td>
-          <td><input type=submit value="등록"></td>
+          <td rowspan="2"><input type=submit class="btn" value="등록"></td>
         </tr>
         <tr>
-          <td><input type=text name="worker" required><br></td>
-          <td><input type=text name="todo" required><br></td>
-          <td><input type=date  name="date" ><br></td>
+          <td><input type=text class="btn_input" name="worker" required><br></td>
+          <td><input type=text class="btn_input" name="todo" required><br></td>
+          <td><input type=date  class="btn_input" name="date" ><br></td>
         </tr>
-      
-    
     </form>
     {% if todo_list %}
       {% for todo in todo_list %}
@@ -28,7 +30,8 @@
         <td>{{ todo[1] }}</td>
         <td>{{ todo[2] }}</td>
         <td>{{ todo[3] }}</td>
-        <td><a href="/delete/{{user_id}}/{{todo[2]}}">삭제</a></td>
+        <td><input type=submit value="삭제" onclick="location.href='/delete/{{user_id}}/{{todo[2]}}'"></td>
+        <!-- <td><a href="/delete/{{user_id}}/{{todo[2]}}">삭제</a></td> -->
       </tr>
       {% endfor %}
       </table>

@@ -10,15 +10,18 @@ body{
   font-family: "NanumBarunGothicLight", sans-serif;
   font-size: 90%;
 }
+
 table{
   text-align: center;
   color: #734A56;
 }
+
 .btn_input{
   opacity: 80%;
   /* background-color:#D5899F;
   border-color: #D5899F; */
 }
+
 .btn{
   /* background-color: transparent; */
   background-color:#D5899F;
