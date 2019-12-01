@@ -46,17 +46,6 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # user_id = request.form['id']
-    # user_pass = request.form['pass']
-    # # user_pass_re = request.form['pass_re']
-    # user_team = request.form['team']
-    # sql = "select id from user where id = '" + user_id + "';"
-    # if curs.execute(sql) == 0 and user_id:
-    #     sql = "INSERT INTO user values('" + user_id + "', '" + user_pass + "', '" + user_team + "');"
-    #     curs.execute(sql)
-    #     conn.commit()
-    #     return redirect('/')
-    # else:
     return render_template('debug_register.html')
 
 
@@ -80,6 +69,29 @@ def register_check():
     elif user_pass != user_pass_re:
         error_msg = "비밀번호와 확인이 다릅니다."
         return render_template('debug_register.html', pass_error=error_msg)
+
+
+@app.route('/delete/<user_id>/<todo>', methods=['GET', 'POST'])
+def delete_todo(user_id, todo):
+    sql = "delete from worklist where todo = '" + todo + "';"
+    curs.execute(sql)
+    conn.commit()
+    user_team = user_team_search(user_id)
+    todo_list = user_todo(user_team)
+    return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list)
+
+
+@app.route('/insert/<user_id>', methods=['GET', 'POST'])
+def lnsert_todo(user_id):
+    user_team = user_team_search(user_id)
+    worker = request.form['worker']
+    todo = request.form['todo']
+    date = request.form['date']
+    sql = "insert into worklist values('"+user_team+"', '"+worker+"','"+todo+"', '"+date+"');"
+    curs.execute(sql)
+    conn.commit()
+    todo_list = user_todo(user_team)
+    return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list)
 
 
 def user_checking(userID, userPass):
