@@ -7,17 +7,31 @@
   <body>
     <h1>환영합니다 {{user_id}}님 여기는 {{user_team}} 할일 리스트입니다.</h1>
     <form name="todo_register" method="POST" action="/insert/{{user_id}}">
-    담당자  : <input type=text name="worker" required><br>
-    할 일 : <input type=text name="todo" required><br>
-    기한 : <input type=date  name="date" ><br>
-    <input type=submit value="등록">
+      <table>
+        <tr>
+          <td>담당자</td>
+          <td>할 일</td>
+          <td>기한</td>
+          <td><input type=submit value="등록"></td>
+        </tr>
+        <tr>
+          <td><input type=text name="worker" required><br></td>
+          <td><input type=text name="todo" required><br></td>
+          <td><input type=date  name="date" ><br></td>
+        </tr>
+      
+    
     </form>
     {% if todo_list %}
       {% for todo in todo_list %}
-        <h5>담당자는{{ todo[1] }}이고,
-          <br>해야할 것은 {{ todo[2] }}, 기한은 {{ todo[3] }}까지입니다.
-          <a href="/delete/{{user_id}}/{{todo[2]}}">삭제</a></h5>
+      <tr>
+        <td>{{ todo[1] }}</td>
+        <td>{{ todo[2] }}</td>
+        <td>{{ todo[3] }}</td>
+        <td><a href="/delete/{{user_id}}/{{todo[2]}}">삭제</a></td>
+      </tr>
       {% endfor %}
+      </table>
     {% endif %}
   </body>
 </html>

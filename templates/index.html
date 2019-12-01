@@ -19,12 +19,28 @@
       {% endfor %}
     {% endif %}
     <form name="login" method="POST" action="/login">
-    아이디 : <input type=text name="id"><br>
-    비밀번호 : <input type=password name="pass"><br>
-    <input type=submit value="로그인">
+      <table>
+        <tr>
+          <td>아이디</td>
+          <td><input type=text name="id"><br></td>
+        </tr>
+        <tr>
+          <td>비밀번호</td>
+          <td><input type=password name="pass"><br></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type=submit value="로그인"></td>
+        </tr>
+      </table>
     </form>
     <form name="register" method="POST" action="/register">
-    <input type=submit value="회원가입">
+      <table>
+        <tr>
+          <td></td>
+          <td><input type=submit value="회원가입"></td>
+        </tr>
+      </table>
     </form>
   </body>
 </html>
