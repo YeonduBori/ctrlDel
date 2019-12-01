@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel = "stylesheet" href = "register.css"></link>
+    <title>Ctrl+Del</title>
+    <link rel = "stylesheet" href="../static/index.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
   </head>
   <body class = "layer">
     {% if pass_error %}
@@ -27,11 +28,15 @@
          <td>팀</td>
          <td><input type=text name="team" required><br></td>
        </tr>
+       <tr><td colspan="2"><br></td></tr>
        <tr>
-         <td><input type = submit value = "회원가입"></td>
+         <td colspan="2"><input class="btn" type = submit value = "회원가입"></td>
+       </tr>
+       <tr>
+          <td colspan="2"><a style="font-size:90%; color:#734A56;"href="/">홈으로</a></td>
        </tr>
     </table>
     </form>
-    <a href="/">홈으로</a>
+    
   </body>
 </html>
