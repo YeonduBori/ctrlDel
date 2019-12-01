@@ -3,17 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel = "stylesheet" href = "register.css"></link>
   </head>
-  <body>
+  <body class = "layer">
     {% if pass_error %}
       <h1>{{pass_error}}</h1>
     {% endif %}
     <form name="register" method="POST" action="/register_check">
-    아이디 : <input type=text name="id" required><br>
-    비밀번호 : <input type=password id="password" name="pass" required><br>
-    비밀번호 확인 : <input type=password id="password_re" name="pass_re" required><br>
-    팀 : <input type=text name="team" required><br>
-    <input type=submit value="회원가입">
+    <table>
+      <tr>
+          <td>아이디</td>
+          <td><input type=text name="id" required><br></td>
+      </tr>
+      <tr>
+        <td>비밀번호</td>
+        <td><input type=password id="password" name="pass" required><br></td>
+      </tr>
+      <tr>
+          <td>비밀번호 확인</td>
+          <td><input type=password id="password_re" name="pass_re" required><br></td>
+      </tr>
+       <tr>
+         <td>팀</td>
+         <td><input type=text name="team" required><br></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td><input type = submit value = "회원가입"></td>
+       </tr>
+    </table>
     </form>
     <a href="/">홈으로</a>
   </body>

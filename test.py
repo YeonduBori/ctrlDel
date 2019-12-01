@@ -1,7 +1,7 @@
 import pymysql
 from flask import Flask, redirect, url_for, request, render_template, request, Response
-from flask_ngrok import run_with_ngrok
-conn = pymysql.connect(host='localhost', user='root', password='171004', db='mydb', charset='utf8')
+# from flask_ngrok import run_with_ngrok
+conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r!@#', db='mydb', charset='utf8')
 curs = conn.cursor()
 # sql = "select * from student;"
 # curs.execute(sql)
@@ -24,7 +24,7 @@ curs = conn.cursor()
 #     print(idx)
 # Flask 객체를 생성하고 그 이름을 app 으로 설정
 app = Flask(__name__)
-run_with_ngrok(app)
+# run_with_ngrok(app)
 
 
 @app.route('/', methods=['GET', 'POST'])

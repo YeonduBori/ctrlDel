@@ -1,0 +1,5 @@
+.DS_Store
+.idea/
+.vscode/
+get-pip.py
+static/todo-list
