@@ -1,0 +1,30 @@
+body{
+  /* width: 15%;
+  margin: 35% auto; */
+  display : flex;
+  justify-content:center;
+  align-items:center;
+  margin-top: 20%;
+
+  background-color: #D5A7AE;
+  font-family: "NanumBarunGothicLight", sans-serif;
+  font-size: 90%;
+}
+table{
+  text-align: center;
+  color: #734A56;
+}
+.btn_input{
+  opacity: 80%;
+  /* background-color:#D5899F;
+  border-color: #D5899F; */
+}
+.btn{
+  /* background-color: transparent; */
+  background-color:#D5899F;
+  border: 0px;
+  font-size: 120%;
+  color: #734A56;
+  border-radius: 7px;
+  width: 100%;
+}

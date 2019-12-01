@@ -3,42 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Ctrl+Del</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
+    <link rel = "stylesheet" href="../static/index.css" type="text/css">
   </head>
   <body>
-    {% if user_data %}
-    <h1>아이디, 비밀번호, 팀명 출력</h1>
-      {% for user in user_data %}
-        <h3>아이디는 {{ user[0] }}, 비밀번호는 {{user[1]}}, 소속 팀{{user[2]}}</h3>
-      {% endfor %}
-    {% endif %}
-    {% if todo_list %}
-    <h1>담당자, 해야할 것, 기한</h1>
-      {% for todo in todo_list %}
-        <h3>담당자는{{ todo[0] }}이고,
-          <br>해야할 것은 {{todo[1]}}, 기한은 {{todo[2]}}까지입니다.</h3>
-      {% endfor %}
-    {% endif %}
     <form name="login" method="POST" action="/login">
       <table>
         <tr>
+          <td colspan="2"><h1 style="font-size: 200%">ctrlDel</h1></td>
+        </tr>
+        <tr>
           <td>아이디</td>
-          <td><input type=text name="id"><br></td>
+          <td><input type=text class="btn_input" name="id"><br></td>
         </tr>
         <tr>
           <td>비밀번호</td>
-          <td><input type=password name="pass"><br></td>
+          <td><input type=password class="btn_input" name="pass"><br></td>
         </tr>
         <tr>
-          <td></td>
-          <td><input type=submit value="로그인"></td>
+            <td><br></td>
+          </tr>
+        <tr>
+          <td colspan="2"><input class="btn" type=submit value="로그인"></td>
         </tr>
-      </table>
     </form>
     <form name="register" method="POST" action="/register">
-      <table>
         <tr>
-          <td></td>
-          <td><input type=submit value="회원가입"></td>
+          <td colspan="2"><input class="btn" type=submit value="회원가입"></td>
         </tr>
       </table>
     </form>
