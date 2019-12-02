@@ -11,25 +11,37 @@ contributors: @pongsoyun, @YeondubBori
 
 
 # Setting
-아래의 셋팅은 최소 셋팅이며, mac에 최적화 되어있습니다. 
+아래의 셋팅은 최소 셋팅입니다.
 
 ```
 // 1. install pip
 sudo easy_install pip
 
-// 2. install Flask
+// 2. pyMySQL install
+python3 -m pip install PyMySQL
+
+// 3. install Flask
 pip install Flask
 
-// 3. install ngrok
+// 4. install ngrok
 pip install flask-ngrok
 ngrok http 8080
 
-// 4. run python3
+// 5. run python3
 python3 test.py
 ```
-윈도우의 경우
+맥OS version
+```
+Python 2.7.10
+Flask 1.1.1
+Werkzeug 0.16.0
+```
+
+윈도우 version
+```
 Flask 1.0.2
-Python 3.6.7 환경에서 작업했습니다.
+Python 3.6.7
+```
 # API 문서
 
 ## def user_checking(userID, userPass)
