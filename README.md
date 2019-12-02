@@ -63,7 +63,8 @@ Python 3.6.7
 ## def lnsert_todo(user_id)
 할일 리스트에서 할 일을 추가해주는 함수입니다.
 
-# 추가안내사항
+## 추가안내사항
+test.py 파일 내
 3번라인 from flask_ngrok import run_with_ngrok<br>
 9번라인 run_with_ngrok(app)<br>
 이 코드에 대해서 주석을 삭제해주면 ngrok 간이 서버에 올라갑니다. 
