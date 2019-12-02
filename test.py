@@ -87,11 +87,22 @@ def lnsert_todo(user_id):
     worker = request.form['worker']
     todo = request.form['todo']
     date = request.form['date']
-    sql = "insert into worklist values('"+user_team+"', '"+worker+"','"+todo+"', '"+date+"');"
-    curs.execute(sql)
-    conn.commit()
-    todo_list = user_todo(user_team)
-    return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list)
+    worker_team = user_team_search(worker)
+    error_msg = None
+    if worker_team != user_team:
+        error_msg = "팀이 다릅니다."
+        todo_list = user_todo(user_team)
+        return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list, error_msg=error_msg)
+    elif worker_team is None:
+        error_msg = "등록되지 않은 사용자입니다."
+        todo_list = user_todo(user_team)
+        return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list, error_msg=error_msg)
+    else:
+        sql = "insert into worklist values('"+user_team+"', '"+worker+"','"+todo+"', '"+date+"');"
+        curs.execute(sql)
+        conn.commit()
+        todo_list = user_todo(user_team)
+        return render_template('debug_todo.html', user_id=user_id, user_team=user_team, todo_list=todo_list)
 
 
 def user_checking(userID, userPass):
@@ -114,6 +125,8 @@ def user_team_search(userID):
     result_query = curs.fetchone()
     if result_query is not None:
         return result_query[0]
+    else:
+        return None
 
 
 def user_todo(user_team):
