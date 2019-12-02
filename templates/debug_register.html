@@ -7,11 +7,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
   </head>
   <body class = "layer">
+    <table>
     {% if pass_error %}
-      <h1>{{pass_error}}</h1>
+      <tr>
+        <td style="font-weight: bold; font-size: 120%;" colspan="2">{{pass_error}}</td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
     {% endif %}
     <form name="register" method="POST" action="/register_check">
-    <table>
+    
       <tr>
           <td>아이디</td>
           <td><input type=text name="id" required><br></td>
