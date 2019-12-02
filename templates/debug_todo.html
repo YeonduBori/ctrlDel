@@ -16,6 +16,9 @@
           <td style="font-weight: bold">담당자</td>
           <td style="font-weight: bold">할 일</td>
           <td style="font-weight: bold">기한</td>
+          {% if error_msg %}
+          <script>alert('{{ error_msg }}')</script>
+          {% endif %}
           <td rowspan="2" colspan="2"><input type=submit class="btn" value="등록"></td>
         </tr>
         <tr>
