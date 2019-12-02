@@ -27,7 +27,9 @@ ngrok http 8080
 // 4. run python3
 python3 test.py
 ```
-
+윈도우의 경우
+Flask 1.0.2
+Python 3.6.7 환경에서 작업했습니다.
 # API 문서
 
 ## def user_checking(userID, userPass)
@@ -39,4 +41,17 @@ python3 test.py
 ## def user_todo(user_team)
 유저의 팀을 넣어주면 할일 테이블에서 팀으로 셀렉트하여 리스트로 리턴해줍니다.
 
+## def register_check()
+회원가입시 이미 가입한 유저인지 확인하고 비밀번호 확인과 비밀번호가 다르면 회원가입이 안되게 해줍니다.
+그 경우가 아니여야 회원가입 됩니다.
 
+## def delete_todo(user_id, todo)
+할일 리스트에서 할 일을 삭제해주는 함수입니다.
+
+## def lnsert_todo(user_id)
+할일 리스트에서 할 일을 추가해주는 함수입니다.
+
+# 추가안내사항
+from flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
+이 코드에 대해서 주석을 삭제해주면 ngrok 간이 서버에 올라갑니다. 
