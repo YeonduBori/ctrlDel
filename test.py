@@ -1,27 +1,9 @@
 import pymysql
-from flask import Flask, redirect, url_for, request, render_template, request, Response
+from flask import Flask, redirect, render_template, request, Response
 # from flask_ngrok import run_with_ngrok
 conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r!@#', db='mydb', charset='utf8')
 curs = conn.cursor()
-# sql = "select * from student;"
-# curs.execute(sql)
-# data = curs.fetchall()
-# #데이터 삽입작업
-# sql = "INSERT into user values ('dongho', '171004', '언행일치');"
-# curs.execute(sql)
-# sql = "INSERT into workList values ('dongho', '게임플레이고민', '2019-12-14');"
-# curs.execute(sql)
-# sql = "select * from user;"
-# curs.execute(sql)
-# user_data = curs.fetchall()
-# sql = "select * from workList;"
-# curs.execute(sql)
-# todo_list = curs.fetchall()
-#debug 용 fetch 출력
-# for idx in user_data:
-#     print(idx)
-# for idx in todo_list:
-#     print(idx)
+
 # Flask 객체를 생성하고 그 이름을 app 으로 설정
 app = Flask(__name__)
 # run_with_ngrok(app)
