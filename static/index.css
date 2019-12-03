@@ -11,10 +11,6 @@ body{
   font-size: 90%;
 }
 
-table{
-  text-align: center;
-  color: #734A56;
-}
 
 .btn_input{
   opacity: 80%;
@@ -31,3 +27,16 @@ table{
   border-radius: 7px;
   width: 100%;
 }
+
+
+table{
+  text-align: center;
+  color: #734A56;
+}
+
+input{
+  outline:none;
+  outline: none;
+  border: none;
+}
+
