@@ -1,5 +1,6 @@
 # ctrlDel
 contributors: @pongsoyun, @YeondubBori
+데모영상에 대한 설명은, `demoExplain.md` 파일을 참고 부탁드립니다.
 
 # Introduce Our Services
 - 회원별 데이터를 개별로 관리합니다.
